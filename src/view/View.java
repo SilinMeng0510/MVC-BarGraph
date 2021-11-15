@@ -1,8 +1,9 @@
+package view;
+
 import org.codehaus.groovy.control.messages.Message;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.Rectangle2D;
 import java.util.concurrent.BlockingQueue;
 
 public class View extends JFrame {
@@ -17,43 +18,47 @@ public class View extends JFrame {
     JLabel greenLabel;
     JLabel blueLabel;
 
-    JLabel redBar;
-    JLabel greenBar;
-    JLabel blueBar;
+    BarGraph bars;
 
-    public View(BlockingQueue<Message> queue, Rectangle2D red, Rectangle2D green, Rectangle2D blue){
+    public View(BlockingQueue<Message> queue){
         this.queue = queue;
+
+        // this.bars = new BarGraph();
 
         this.redText = new JTextField(0);
         this.greenText = new JTextField(0);
         this.blueText = new JTextField(0);
+
         this.updateButton = new JButton("update");
+        updateButton.addActionListener(e -> {
+
+        });
         this.resetButton = new JButton("reset");
+        resetButton.addActionListener(e -> {
+
+        });
 
         this.redLabel = new JLabel("Red:");
         this.greenLabel = new JLabel("Green:");
         this.blueLabel = new JLabel("Blue:");
 
-        this.add(redText);
-        this.add(greenText);
-        this.add(blueText);
+        JPanel insert = new JPanel();
+        insert.add(redLabel);
+        insert.add(redText);
+        insert.add(greenLabel);
+        insert.add(greenText);
+        insert.add(blueLabel);
+        insert.add(blueText);
+        insert.add(updateButton);
+        insert.add(resetButton);
 
-        this.add(updateButton);
-        this.add(resetButton);
+        this.add(insert, BorderLayout.WEST);
+        this.add(bars, BorderLayout.EAST);
 
-        this.add(redBar);
-        this.add(greenBar);
-        this.add(blueBar);
-
-        this.add(redLabel);
-        this.add(greenLabel);
-        this.add(blueLabel);
 
         this.setSize(500, 500);
-        this.setLayout(new FlowLayout());
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-
 
 }
