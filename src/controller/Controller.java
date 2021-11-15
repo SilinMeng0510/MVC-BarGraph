@@ -48,7 +48,9 @@ public class Controller {
             if (message.getClass() != UpdateMessage.class){
                 return ValveResponse.MISS;
             }
-
+            UpdateMessage msg = (UpdateMessage) message;
+            barModel.setHeight(msg.getValues());
+            view.updateBarGraph(barModel.getHeight());
             return ValveResponse.EXECUTED;
         }
     }
@@ -59,7 +61,9 @@ public class Controller {
             if (message.getClass() != ResetMessage.class){
                 return ValveResponse.MISS;
             }
-
+            ResetMessage msg = (ResetMessage) message;
+            barModel.setHeight(msg.getValues());
+            view.updateBarGraph(barModel.getHeight());
             return ValveResponse.EXECUTED;
         }
     }

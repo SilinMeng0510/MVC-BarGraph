@@ -1,12 +1,12 @@
 package controller;
 
-public class ResetMessage {
-    private int[] heights = {0, 0, 0};
+public class ResetMessage implements Message{
+    private int[] values = {0, 0, 0};
 
     public ResetMessage(){
     }
 
-    public int[] getHeights(){
-        return heights;
+    public int[] getValues(){
+        return values;
     }
 }

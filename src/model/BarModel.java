@@ -1,7 +1,7 @@
 package model;
 
 public class BarModel {
-    private int[] height = new int[3];
+    private int[] height = {0, 0, 0};
 
     public int[] getHeight(){
         return height;

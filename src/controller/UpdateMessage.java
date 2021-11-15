@@ -1,13 +1,13 @@
 package controller;
 
 public class UpdateMessage implements Message{
-    private int[] heights = new int[3];
+    private int[] values = new int[3];
 
     public UpdateMessage(int[] values){
-        heights = values;
+        this.values = values;
     }
 
-    public int[] getHeights(){
-        return heights;
+    public int[] getValues(){
+        return values;
     }
 }

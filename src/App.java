@@ -1,4 +1,7 @@
-import org.codehaus.groovy.control.messages.Message;
+import controller.Controller;
+import model.BarModel;
+import controller.Message;
+import view.View;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -8,9 +11,9 @@ public class App {
 
         BlockingQueue<Message> queue = new LinkedBlockingQueue<>();
 
-        // StudentModel model = new StudentModel();
-        // View view = new View(queue, model.getName(), model.getClasses());
-        // Controller controller = new Controller(queue, model, view);
-        // controller.mainLoop();
+        BarModel model = new BarModel();
+        View view = new View(queue, model.getHeight());
+        Controller controller = new Controller(queue, model, view);
+        controller.mainLoop();
     }
 }
