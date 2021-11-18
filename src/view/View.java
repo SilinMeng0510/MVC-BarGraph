@@ -6,7 +6,6 @@ import controller.Message;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Arrays;
 import java.util.concurrent.BlockingQueue;
 
 public class View extends JFrame {
@@ -21,14 +20,12 @@ public class View extends JFrame {
     JLabel greenLabel;
     JLabel blueLabel;
 
-    // BarGraph bars;
-    JLabel allBars;
+    BarGraph bars;
 
     public View(BlockingQueue<Message> queue, int[] bars){
         this.queue = queue;
 
-        // this.bars = new BarGraph();
-        this.allBars = new JLabel(Arrays.toString(bars));
+        this.bars = new BarGraph();
 
         this.redText = new JTextField(5);
         redText.setText("0");
@@ -39,11 +36,11 @@ public class View extends JFrame {
 
         this.updateButton = new JButton("update");
         updateButton.addActionListener(e -> {
-            int[] value = new int[3];
-            value[0] = Integer.parseInt(redText.getText());
-            value[1] = Integer.parseInt(greenText.getText());
-            value[2] = Integer.parseInt(blueText.getText());
             try {
+                int[] value = new int[3];
+                value[0] = Integer.parseInt(redText.getText());
+                value[1] = Integer.parseInt(greenText.getText());
+                value[2] = Integer.parseInt(blueText.getText());
                 Message msg = new UpdateMessage(value);
                 queue.put(msg);
             } catch (InterruptedException exception) {
@@ -77,15 +74,13 @@ public class View extends JFrame {
         this.setSize(500, 300);
 
         this.add(insert, BorderLayout.WEST);
-        // this.add(bars, BorderLayout.EAST);
-        this.add(allBars, BorderLayout.CENTER);
+        this.add(this.bars, BorderLayout.CENTER);
 
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     public void updateBarGraph(int[] heights){
-        // BarGraph update process
-        this.allBars.setText(Arrays.toString(heights));
+        this.bars.heightChange(heights);
     }
 }
