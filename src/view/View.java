@@ -83,4 +83,11 @@ public class View extends JFrame {
     public void updateBarGraph(int[] heights){
         this.bars.heightChange(heights);
     }
+
+    public void resetBarGraph(int[] heights){
+        this.bars.heightChange(heights);
+        redText.setText("0");
+        greenText.setText("0");
+        blueText.setText("0");
+    }
 }

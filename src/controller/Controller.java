@@ -64,7 +64,7 @@ public class Controller {
             }
             ResetMessage msg = (ResetMessage) message;
             barModel.setHeight(msg.getValues());
-            view.updateBarGraph(barModel.getHeight());
+            view.resetBarGraph(barModel.getHeight());
             return ValveResponse.EXECUTED;
         }
     }
