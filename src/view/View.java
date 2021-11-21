@@ -22,7 +22,7 @@ public class View extends JFrame {
 
     BarGraph bars;
 
-    public View(BlockingQueue<Message> queue, int[] bars){
+    public View(BlockingQueue<Message> queue){
         this.queue = queue;
 
         this.bars = new BarGraph();

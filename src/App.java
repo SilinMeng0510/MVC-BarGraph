@@ -12,7 +12,7 @@ public class App {
         BlockingQueue<Message> queue = new LinkedBlockingQueue<>();
 
         BarModel model = new BarModel();
-        View view = new View(queue, model.getHeight());
+        View view = new View(queue);
         Controller controller = new Controller(queue, model, view);
         controller.mainLoop();
     }
